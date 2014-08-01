@@ -1,0 +1,8 @@
+# Configuration file for the GraphVizTreeVisualizationPlugin for the
+# Explorer.
+
+# the graphviz executable to use (full path if not on sytem path)
+Executable=dot
+
+# additional options
+AdditionalOptions=-T png
