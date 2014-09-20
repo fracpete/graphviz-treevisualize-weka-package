@@ -34,3 +34,6 @@ And add the following content (adjust path, of course):
 Additional options can be specified with the `AdditionalOptions` property in
 the same properties file.
 
+For more information on how to install the package, see:
+
+http://weka.wikispaces.com/How+do+I+use+the+package+manager%3F
