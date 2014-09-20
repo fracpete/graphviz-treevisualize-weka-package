@@ -3,8 +3,8 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>nz.ac.waikato.cms.weka</groupId>
-  <artifactId>graphviz-treevisualize</artifactId>
+  <groupId>com.github.fracpete</groupId>
+  <artifactId>graphviz-treevisualize-weka-package</artifactId>
   <version>2014.7.31-SNAPSHOT</version>
   <packaging>jar</packaging>
 
@@ -29,15 +29,6 @@
       <name>Peter Reutemann</name>
     </developer>
   </developers>
-
-  <mailingLists>
-    <mailingList>
-      <name>wekalist</name>
-      <subscribe>https://list.scms.waikato.ac.nz/mailman/listinfo/wekalist</subscribe>
-      <unsubscribe>https://list.scms.waikato.ac.nz/mailman/listinfo/wekalist</unsubscribe>
-      <archive>https://list.scms.waikato.ac.nz/mailman/htdig/wekalist/</archive>
-    </mailingList>
-  </mailingLists>
 
   <parent>
     <groupId>org.sonatype.oss</groupId>
