@@ -1,7 +1,8 @@
 graphviz-treevisualize-weka-package
 ===================================
 
-TreeVisualize plugin for the Explorer using GraphViz to generate the tree.
+TreeVisualize plugin for the Explorer using GraphViz (http://www.graphviz.org/)
+to generate the tree.
 
 By default, the plugin expects the `dot` executable to be available on the
 system path. If that should not be the case, you can specify the correct
