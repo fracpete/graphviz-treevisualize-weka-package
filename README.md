@@ -12,12 +12,12 @@ Simply create the following file:
 
 * Linux/Mac
   <pre>
-  $HOME/wekafiles/GraphVizTreeVisualization.props
+  $HOME/wekafiles/props/GraphVizTreeVisualization.props
   </pre>
 
 * Windows
   <pre>
-  %USERPROFILE%\wekafiles\GraphVizTreeVisualization.props
+  %USERPROFILE%\wekafiles\props\GraphVizTreeVisualization.props
   </pre>
 
 And add the following content (adjust path, of course):
