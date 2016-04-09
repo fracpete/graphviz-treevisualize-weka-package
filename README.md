@@ -11,29 +11,35 @@ location in the `GraphVizTreeVisualization.props` properties file.
 Simply create the following file:
 
 * Linux/Mac
-  <pre>
+  ```
   $HOME/wekafiles/props/GraphVizTreeVisualization.props
-  </pre>
-
+  ```
+`
 * Windows
-  <pre>
+  ```
   %USERPROFILE%\wekafiles\props\GraphVizTreeVisualization.props
-  </pre>
+  ```
 
 And add the following content (adjust path, of course):
 
 * Linux/Mac
-  <pre>
+  ```
   Executable=/some/where/dot
-  </pre>
+  ```
 
 * Windows
-  <pre>
+  ```
   Executable=C:/Progam Files/some/where/dot.exe
-  </pre>
+  ```
 
 Additional options for the executable can be specified with the
 `AdditionalOptions` property in the same properties file.
+
+
+Releases
+--------
+
+* (Release v2014.8.1)[https://github.com/fracpete/graphviz-treevisualize-weka-package/releases/download/v2014.8.1/graphviz-treevisualize-2014.8.1.zip]
 
 
 How to use packages
