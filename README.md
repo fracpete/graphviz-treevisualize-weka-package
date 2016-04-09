@@ -39,7 +39,7 @@ Additional options for the executable can be specified with the
 Releases
 --------
 
-* [Release v2014.8.1](https://github.com/fracpete/graphviz-treevisualize-weka-package/releases/download/v2014.8.1/graphviz-treevisualize-2014.8.1.zip)
+* [2014.8.1](https://github.com/fracpete/graphviz-treevisualize-weka-package/releases/download/v2014.8.1/graphviz-treevisualize-2014.8.1.zip)
 
 
 How to use packages
