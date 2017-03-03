@@ -36,10 +36,25 @@ Additional options for the executable can be specified with the
 `AdditionalOptions` property in the same properties file.
 
 
+GraphVizTreeVisualization.props
+-------------------------------
+
+Explanation of parameters:
+
+* `Executable` -- the path to the executable, if not on the system path 
+* `AdditionalOptions` -- additional options to use, like output format
+* `ImageExtension` -- the image extension to use
+* `Debug` -- whether to output debugging information
+* `CleanUpTempFiles` -- whether to clean up temporary files
+* `DialogWidth` -- the default width of the dialog displaying the graph
+* `DialogHeight` -- the default height of the dialog displaying the graph
+
+
 Releases
 --------
 
-* [2014.8.1](https://github.com/fracpete/graphviz-treevisualize-weka-package/releases/download/v2014.8.1/graphviz-treevisualize-2014.8.1.zip)
+* [2017.3.3](https://github.com/fracpete/graphviz-treevisualize-weka-package/releases/download/v2017.3.3/graphviz-treevisualize-2017.3.3.zip) (Weka >= 3.9.1)
+* [2014.8.1](https://github.com/fracpete/graphviz-treevisualize-weka-package/releases/download/v2014.8.1/graphviz-treevisualize-2014.8.1.zip) (Weka >= 3.7.11 and < 3.8.1 and < 3.9.1)
 
 
 How to use packages
@@ -59,7 +74,7 @@ Add the following dependency in your `pom.xml` to include the package:
     <dependency>
       <groupId>com.github.fracpete</groupId>
       <artifactId>graphviz-treevisualize-weka-package</artifactId>
-      <version>2014.8.1</version>
+      <version>2017.3.3</version>
       <type>jar</type>
       <exclusions>
         <exclusion>
