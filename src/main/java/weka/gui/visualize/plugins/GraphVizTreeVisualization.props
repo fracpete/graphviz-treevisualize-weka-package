@@ -5,4 +5,25 @@
 Executable=dot
 
 # additional options
-AdditionalOptions=-T png
+# use 'man dot' or 'dot -h'
+AdditionalOptions=-Tpng
+
+# the extension for the image output file
+# (not dot)
+ImageExtension=png
+
+# whether to output debugging info
+# (true|false)
+Debug=false
+
+# Whether to clean up temporary files
+# (true|false)
+CleanUpTempFiles=true
+
+# The width of the dialog for displaying the graph
+# (int)
+DialogWidth=800
+
+# The height of the dialog for displaying the graph
+# (int)
+DialogHeight=600

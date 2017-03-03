@@ -15,16 +15,16 @@
 
 /**
  * GraphVizPanel.java
- * Copyright (C) 2014 University of Waikato, Hamilton, New Zealand
+ * Copyright (C) 2014-2017 University of Waikato, Hamilton, New Zealand
  */
 package weka.gui.visualize.plugins;
+
+import weka.gui.visualize.PrintablePanel;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-
-import weka.gui.visualize.PrintablePanel;
 
 /**
  * Displays a GraphViz graph in dotty notation.
@@ -60,7 +60,7 @@ public class GraphVizPanel
    */
   public void setDotty(String value) {
     m_Dotty = value;
-    m_Image = GraphVizTreeVisualization.toBufferedImage(m_Dotty);
+    m_Image = GraphVizTreeVisualization.getSingleton().toBufferedImage(m_Dotty);
     if (m_Image == null) {
       setSize(new Dimension(600, 400));
       setMinimumSize(new Dimension(600, 400));

@@ -5,11 +5,11 @@
 
   <groupId>com.github.fracpete</groupId>
   <artifactId>graphviz-treevisualize-weka-package</artifactId>
-  <version>2014.7.31-SNAPSHOT</version>
+  <version>2017.3.3-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>graphviz-treevisualize</name>
-  <description>Contains TreeVisualize plugin for the Explorer for visualization trees (eg J48).</description>
+  <description>Contains TreeVisualize plugin for the Explorer for visualization trees (eg J48) using GraphViz.</description>
   <url>https://github.com/fracpete/graphviz-treevisualize-weka-package</url>
   <organization>
     <name>University of Waikato, Hamilton, NZ</name>
@@ -85,15 +85,7 @@
     <dependency>
       <groupId>nz.ac.waikato.cms.weka</groupId>
       <artifactId>weka-dev</artifactId>
-      <version>[3.7.11,)</version>
-    </dependency>
-
-    <dependency>
-      <groupId>nz.ac.waikato.cms.weka</groupId>
-      <artifactId>weka-dev</artifactId>
-      <version>[3.7.11,)</version>
-      <type>test-jar</type>
-      <scope>test</scope>
+      <version>[3.9.1,)</version>
     </dependency>
 
     <dependency>
