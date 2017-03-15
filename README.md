@@ -67,7 +67,7 @@ AdditionalOptions=-Tpng
 The new class loading mechanism in these Weka releases prevents the properties
 file from being loaded and graphviz not getting an output type parameter in
 its command-line, resulting in outputting the graph data again (which of course
-will fail to load as an image, see #3).
+will fail to load as an image, see issue [#3](https://github.com/fracpete/graphviz-treevisualize-weka-package/issues/3)).
 
 ## How to use packages
 
