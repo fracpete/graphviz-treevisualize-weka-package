@@ -1,5 +1,4 @@
-graphviz-treevisualize-weka-package
-===================================
+# graphviz-treevisualize-weka-package
 
 TreeVisualize plugin for the Explorer using GraphViz (http://www.graphviz.org/)
 to generate the tree.
@@ -36,8 +35,7 @@ Additional options for the executable can be specified with the
 `AdditionalOptions` property in the same properties file.
 
 
-GraphVizTreeVisualization.props
--------------------------------
+## GraphVizTreeVisualization.props
 
 Explanation of parameters:
 
@@ -50,23 +48,35 @@ Explanation of parameters:
 * `DialogHeight` -- the default height of the dialog displaying the graph
 
 
-Releases
---------
+## Releases
 
 * [2017.3.3](https://github.com/fracpete/graphviz-treevisualize-weka-package/releases/download/v2017.3.3/graphviz-treevisualize-2017.3.3.zip) (Weka >= 3.9.1)
 * [2014.8.1](https://github.com/fracpete/graphviz-treevisualize-weka-package/releases/download/v2014.8.1/graphviz-treevisualize-2014.8.1.zip) (Weka >= 3.7.11 and < 3.8.1 and < 3.9.1)
 
+### Troubleshooting
 
-How to use packages
--------------------
+You can use the *2014.8.1* release with Weka 3.8.1 or 3.9.1, but you need to 
+create the `GraphVizTreeVisualization.props` properties file in the location
+explained above and add the following parameter to it (you may also have to
+add the `Executable` parameter):
+
+```
+AdditionalOptions=-Tpng
+```
+
+The new class loading mechanism in these Weka releases prevents the properties
+file from being loaded and graphviz not getting an output type parameter in
+its command-line, resulting in outputting the graph data again (which of course
+will fail to load as an image, see #3).
+
+## How to use packages
 
 For more information on how to install the package, see:
 
 http://weka.wikispaces.com/How+do+I+use+the+package+manager%3F
 
 
-Maven
------
+## Maven
 
 Add the following dependency in your `pom.xml` to include the package:
 
