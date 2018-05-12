@@ -85,7 +85,7 @@ Add the following dependency in your `pom.xml` to include the package:
     <dependency>
       <groupId>com.github.fracpete</groupId>
       <artifactId>graphviz-treevisualize-weka-package</artifactId>
-      <version>2017.3.3</version>
+      <version>2018.5.13</version>
       <type>jar</type>
       <exclusions>
         <exclusion>
