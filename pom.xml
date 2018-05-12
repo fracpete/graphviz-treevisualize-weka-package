@@ -5,7 +5,7 @@
 
   <groupId>com.github.fracpete</groupId>
   <artifactId>graphviz-treevisualize-weka-package</artifactId>
-  <version>2017.3.4-SNAPSHOT</version>
+  <version>2018.5.13-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>graphviz-treevisualize</name>
