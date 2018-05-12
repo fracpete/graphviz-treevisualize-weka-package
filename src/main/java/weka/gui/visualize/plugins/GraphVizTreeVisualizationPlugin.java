@@ -13,9 +13,9 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/**
+/*
  * GraphVizTreeVisualizationPlugin.java
- * Copyright (C) 2014-2017 University of Waikato, Hamilton, New Zealand
+ * Copyright (C) 2014-2018 University of Waikato, Hamilton, New Zealand
  */
 package weka.gui.visualize.plugins;
 
@@ -46,8 +46,11 @@ public class GraphVizTreeVisualizationPlugin
   /** the filechooser for saving the dotty graph. */
   protected JFileChooser m_FileChooserDotty;
 
-  /** the filechooser for saving the iimage. */
+  /** the filechooser for saving the image. */
   protected JFileChooser m_FileChooserImage;
+
+  /** the filechooser for exporting the grqpah. */
+  protected JFileChooser m_FileChooserExport;
 
   /**
    * Returns the filechooser to use for saving the dotty graph.
@@ -91,6 +94,38 @@ public class GraphVizTreeVisualizationPlugin
     }
 
     return m_FileChooserImage;
+  }
+
+  /**
+   * Returns the filechooser to use for exporting the graph.
+   *
+   * @return		the filechooser
+   */
+  protected JFileChooser getFileChooserExport() {
+    ExtensionFileFilter filterPS;
+    ExtensionFileFilter filterEPS;
+    ExtensionFileFilter filterPDF;
+
+    if (m_FileChooserExport == null) {
+      filterPS = new ExtensionFileFilter(
+	new String[]{".ps"},
+	"Postscript (.ps)");
+      filterEPS = new ExtensionFileFilter(
+	new String[]{".eps"},
+	"Encapsulated postscript (.eps)");
+      filterPDF = new ExtensionFileFilter(
+	new String[]{".pdf"},
+	"PDF (.pdf)");
+      m_FileChooserExport = new JFileChooser();
+      m_FileChooserExport.addChoosableFileFilter(filterPDF);
+      m_FileChooserExport.addChoosableFileFilter(filterPS);
+      m_FileChooserExport.addChoosableFileFilter(filterEPS);
+      m_FileChooserExport.setFileFilter(filterPDF);
+      m_FileChooserExport.setFileSelectionMode(JFileChooser.FILES_ONLY);
+      m_FileChooserExport.setAcceptAllFileFilterUsed(false);
+    }
+
+    return m_FileChooserExport;
   }
 
   /**
@@ -188,6 +223,22 @@ public class GraphVizTreeVisualizationPlugin
     });
     result.add(menuitem);
 
+    menuitem = new JMenuItem("Export graph...");
+    menuitem.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+	JFileChooser fileChooser = getFileChooserExport();
+	int retVal = fileChooser.showSaveDialog(null);
+	if (retVal != JFileChooser.APPROVE_OPTION)
+	  return;
+	ExtensionFileFilter filter = (ExtensionFileFilter) fileChooser.getFileFilter();
+	String msg = GraphVizTreeVisualization.getSingleton().export(dotty, filter.getExtensions()[0].substring(1), "" + fileChooser.getSelectedFile());
+	if (msg != null)
+	  JOptionPane.showMessageDialog(null, msg, "Error exporting graph", JOptionPane.ERROR_MESSAGE);
+      }
+    });
+    result.add(menuitem);
+
     return result;
   }
   
@@ -208,7 +259,7 @@ public class GraphVizTreeVisualizationPlugin
    * @return		the maximum version
    */
   public String getMaxVersion() {
-    return "3.10.0";
+    return "4.0.0";
   }
   
   /**

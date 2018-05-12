@@ -13,9 +13,9 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/**
+/*
  * GraphVizTreeVisualization.java
- * Copyright (C) 2014-2017 University of Waikato, Hamilton, New Zealand
+ * Copyright (C) 2014-2018 University of Waikato, Hamilton, New Zealand
  */
 package weka.gui.visualize.plugins;
 
@@ -37,7 +37,6 @@ import java.util.Properties;
  * Class for generating GraphViz graphs for trees.
  *
  * @author  fracpete (fracpete at waikato dot ac dot nz)
- * @version $Revision$
  */
 public class GraphVizTreeVisualization {
 
@@ -251,6 +250,18 @@ public class GraphVizTreeVisualization {
    * @return			null if successful, otherwise error message
    */
   public String generateGraph(String dottyFilename, String imageFilename) {
+    return generateGraph(dottyFilename, null, imageFilename);
+  }
+
+  /**
+   * Turns the dotty file into an image.
+   *
+   * @param dottyFilename	the file with the graph in dotty notation to turn into image
+   * @param format 		the format to use, null to ignore
+   * @param imageFilename 	the name of the image to generate
+   * @return			null if successful, otherwise error message
+   */
+  public String generateGraph(String dottyFilename, String format, String imageFilename) {
     String		result;
     String		additional;
     List<String>	cmd;
@@ -265,6 +276,10 @@ public class GraphVizTreeVisualization {
     cmd.add(getExecutable());
     cmd.add("-o");
     cmd.add(imageFilename);
+    if (format != null) {
+      cmd.add("-T");
+      cmd.add(format);
+    }
     additional = getAdditionalOptions();
     if (!additional.trim().isEmpty())
       cmd.addAll(Arrays.asList(additional.trim().split(" ")));
@@ -319,7 +334,7 @@ public class GraphVizTreeVisualization {
    *
    * @param dotty		the graph in dotty notation to turn into image
    * @param imageFilename 	the output filename for the image
-   * @return			the generated image, null if failed to convert
+   * @return			null if successful, otherwise error message
    */
   public String saveImage(String dotty, String imageFilename) {
     String 	result;
@@ -338,6 +353,43 @@ public class GraphVizTreeVisualization {
 
     // generate image
     result = generateGraph(dottyFilename, imageFilename);
+    if (result != null) {
+      if (cleanUpTempFiles())
+	deleteFile(dottyFilename);
+      return result;
+    }
+
+    if (cleanUpTempFiles())
+      deleteFile(dottyFilename);
+
+    return null;
+  }
+
+  /**
+   * Turns the dotty graph into an image and saves it under the specified filename.
+   *
+   * @param dotty		the graph in dotty notation to turn into image
+   * @param format		the format to use
+   * @param filename 		the output filename for the image
+   * @return			null if successful, otherwise error message
+   */
+  public String export(String dotty, String format, String filename) {
+    String 	result;
+    String	prefix;
+    String	dottyFilename;
+    int		rand;
+
+    rand          = (int) (Math.random() * 1000);
+    prefix        = System.getProperty("java.io.tmpdir") + File.separator + "gvtv" + Integer.toHexString(rand);
+    dottyFilename = prefix + ".dot";
+
+    // save dotty file
+    result = saveDotty(dotty, dottyFilename);
+    if (result != null)
+      return result;
+
+    // generate output
+    result = generateGraph(dottyFilename, format, filename);
     if (result != null) {
       if (cleanUpTempFiles())
 	deleteFile(dottyFilename);
