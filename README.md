@@ -74,7 +74,7 @@ will fail to load as an image, see issue [#3](https://github.com/fracpete/graphv
 
 For more information on how to install the package, see:
 
-http://weka.wikispaces.com/How+do+I+use+the+package+manager%3F
+https://waikato.github.io/weka-wiki/packages/manager/
 
 
 ## Maven
