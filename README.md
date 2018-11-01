@@ -50,7 +50,7 @@ Explanation of parameters:
 
 ## Releases
 
-* [2018.5.13](https://github.com/fracpete/graphviz-treevisualize-weka-package/releases/download/v2018.5.13/graphviz-treevisualize-2017.5.13.zip) (Weka >= 3.9.1 or Weka >= 3.8.1)
+* [2018.5.13](https://github.com/fracpete/graphviz-treevisualize-weka-package/releases/download/v2018.5.13/graphviz-treevisualize-2018.5.13.zip) (Weka >= 3.9.1 or Weka >= 3.8.1)
 * [2017.3.3](https://github.com/fracpete/graphviz-treevisualize-weka-package/releases/download/v2017.3.3/graphviz-treevisualize-2017.3.3.zip) (Weka >= 3.9.1)
 * [2014.8.1](https://github.com/fracpete/graphviz-treevisualize-weka-package/releases/download/v2014.8.1/graphviz-treevisualize-2014.8.1.zip) (Weka >= 3.7.11 and < 3.8.1 and < 3.9.1)
 
