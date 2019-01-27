@@ -96,3 +96,32 @@ Add the following dependency in your `pom.xml` to include the package:
     </dependency>
 ```
 
+## Screenshots
+
+### Plugin menu
+
+![plugin menu](src/site/resources/plugin_menu.png)
+
+### Show graph
+
+For the displaying the graph as an image:
+
+![show graph](src/site/resources/show_graph.png)
+
+### Save graph data
+
+Allows you to save the graph as `.dot` text file:
+
+![save graph data](src/site/resources/save_graph_data.png)
+
+### Save graph image
+
+Allows you to save the graph as PNG image:
+
+![save graph image](src/site/resources/save_graph_image.png)
+
+### Export graph
+
+Here you can export the graph as PDF, Postscript or encapsulated Postscript:
+
+![export graph](src/site/resources/export_graph.png)
