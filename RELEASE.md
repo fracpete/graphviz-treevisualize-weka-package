@@ -7,7 +7,7 @@ Preparation
 * Change the artifact ID in `pom.xml` to today's date, e.g.:
 
   ```
-2017.3.3-SNAPSHOT
+  2017.3.3-SNAPSHOT
   ```
 
 * Update the version, date and URL in `Description.props` to reflect new
