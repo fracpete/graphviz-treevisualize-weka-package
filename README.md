@@ -40,8 +40,8 @@ Additional options for the executable can be specified with the
 Explanation of parameters:
 
 * `Executable` -- the path to the executable, if not on the system path 
-* `AdditionalOptions` -- additional options to use, like output format
-* `ImageExtension` -- the image extension to use
+* `AdditionalOptions` -- additional options to supply to the `dot` executable
+* `ImageExtension` -- comma-separated list of image extensions to offer in the save dialog
 * `Debug` -- whether to output debugging information
 * `CleanUpTempFiles` -- whether to clean up temporary files
 * `DialogWidth` -- the default width of the dialog displaying the graph
