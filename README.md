@@ -50,6 +50,7 @@ Explanation of parameters:
 
 ## Releases
 
+* 2022.4.13 ([Weka >= 3.9.1](https://github.com/fracpete/graphviz-treevisualize-weka-package/releases/download/v2022.4.13/graphviz-treevisualize-2022.4.13-3.9.x.zip), [Weka >= 3.8.1](https://github.com/fracpete/graphviz-treevisualize-weka-package/releases/download/v2022.4.13/graphviz-treevisualize-2022.4.13-3.8.x.zip))
 * 2018.5.13 ([Weka >= 3.9.1](https://github.com/fracpete/graphviz-treevisualize-weka-package/releases/download/v2018.5.13/graphviz-treevisualize-2018.5.13-3.9.x.zip), [Weka >= 3.8.1](https://github.com/fracpete/graphviz-treevisualize-weka-package/releases/download/v2018.5.13/graphviz-treevisualize-2018.5.13-3.8.x.zip))
 * [2017.3.3](https://github.com/fracpete/graphviz-treevisualize-weka-package/releases/download/v2017.3.3/graphviz-treevisualize-2017.3.3.zip) (Weka >= 3.9.1)
 * [2014.8.1](https://github.com/fracpete/graphviz-treevisualize-weka-package/releases/download/v2014.8.1/graphviz-treevisualize-2014.8.1.zip) (Weka >= 3.7.11 and < 3.8.1 and < 3.9.1)
@@ -85,7 +86,7 @@ Add the following dependency in your `pom.xml` to include the package:
     <dependency>
       <groupId>com.github.fracpete</groupId>
       <artifactId>graphviz-treevisualize-weka-package</artifactId>
-      <version>2018.5.13</version>
+      <version>2022.4.13</version>
       <type>jar</type>
       <exclusions>
         <exclusion>
