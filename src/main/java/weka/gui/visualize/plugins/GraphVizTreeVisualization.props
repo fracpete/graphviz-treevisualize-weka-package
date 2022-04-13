@@ -6,11 +6,11 @@ Executable=dot
 
 # additional options
 # use 'man dot' or 'dot -h'
-AdditionalOptions=-Tpng
+AdditionalOptions=
 
 # the extension for the image output file
-# (not dot)
-ImageExtension=png
+# (comma-separated list, no dots)
+ImageExtension=png,jpg,gif,svg
 
 # whether to output debugging info
 # (true|false)

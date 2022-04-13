@@ -15,7 +15,7 @@
 
 /*
  * GraphVizTreeVisualization.java
- * Copyright (C) 2014-2018 University of Waikato, Hamilton, New Zealand
+ * Copyright (C) 2014-2022 University of Waikato, Hamilton, New Zealand
  */
 package weka.gui.visualize.plugins;
 
@@ -100,12 +100,21 @@ public class GraphVizTreeVisualization {
   }
 
   /**
-   * Returns the extension to use for the image file.
+   * Returns the extensions to use for the image file.
    *
    * @return		the extension for the image (not dot)
    */
-  public String getImageExtension() {
-    return getProperties().getProperty("ImageExtension", "png");
+  public String[] getImageExtension() {
+    return getProperties().getProperty("ImageExtension", "png").split(",");
+  }
+
+  /**
+   * Returns whether debug output should be generated.
+   *
+   * @return		true for debugging output
+   */
+  public boolean getDebug() {
+    return DEBUG || getProperties().getProperty("Debug", "false").equalsIgnoreCase("true");
   }
 
   /**
@@ -172,11 +181,11 @@ public class GraphVizTreeVisualization {
     result = true;
     file   = new File(filename);
     if (file.exists()) {
-      if (DEBUG)
+      if (getDebug())
 	System.out.println("Deleting: " + filename);
       file.delete();
       result = !file.exists();
-      if (DEBUG) {
+      if (getDebug()) {
 	if (result)
 	  System.out.println("Successfully deleted: " + filename);
 	else
@@ -201,7 +210,7 @@ public class GraphVizTreeVisualization {
 
     result = null;
 
-    if (DEBUG)
+    if (getDebug())
       System.out.println("Saving dotty to: " + filename);
 
     fwriter = null;
@@ -246,18 +255,7 @@ public class GraphVizTreeVisualization {
    * Turns the dotty file into an image.
    *
    * @param dottyFilename	the file with the graph in dotty notation to turn into image
-   * @param imageFilename 	the name of the image to generate
-   * @return			null if successful, otherwise error message
-   */
-  public String generateGraph(String dottyFilename, String imageFilename) {
-    return generateGraph(dottyFilename, null, imageFilename);
-  }
-
-  /**
-   * Turns the dotty file into an image.
-   *
-   * @param dottyFilename	the file with the graph in dotty notation to turn into image
-   * @param format 		the format to use, null to ignore
+   * @param format 		the format to use
    * @param imageFilename 	the name of the image to generate
    * @return			null if successful, otherwise error message
    */
@@ -276,16 +274,14 @@ public class GraphVizTreeVisualization {
     cmd.add(getExecutable());
     cmd.add("-o");
     cmd.add(imageFilename);
-    if (format != null) {
-      cmd.add("-T");
-      cmd.add(format);
-    }
+    cmd.add("-T");
+    cmd.add(format);
     additional = getAdditionalOptions();
     if (!additional.trim().isEmpty())
       cmd.addAll(Arrays.asList(additional.trim().split(" ")));
     cmd.add(dottyFilename);
 
-    if (DEBUG)
+    if (getDebug())
       System.out.println("Executing:\n" + cmd);
 
     // execute command
@@ -317,7 +313,7 @@ public class GraphVizTreeVisualization {
     BufferedImage 	result;
     Graphics2D 		g2d;
 
-    if (DEBUG)
+    if (getDebug())
       System.out.println("Loading graph image: " + imageFilename);
 
     icon   = new ImageIcon(imageFilename);
@@ -333,10 +329,11 @@ public class GraphVizTreeVisualization {
    * Turns the dotty graph into an image and saves it under the specified filename.
    *
    * @param dotty		the graph in dotty notation to turn into image
+   * @param format		the format to use
    * @param imageFilename 	the output filename for the image
    * @return			null if successful, otherwise error message
    */
-  public String saveImage(String dotty, String imageFilename) {
+  public String saveImage(String dotty, String format, String imageFilename) {
     String 	result;
     String	prefix;
     String	dottyFilename;
@@ -352,7 +349,7 @@ public class GraphVizTreeVisualization {
       return result;
 
     // generate image
-    result = generateGraph(dottyFilename, imageFilename);
+    result = generateGraph(dottyFilename, format, imageFilename);
     if (result != null) {
       if (cleanUpTempFiles())
 	deleteFile(dottyFilename);
@@ -389,6 +386,8 @@ public class GraphVizTreeVisualization {
       return result;
 
     // generate output
+    System.out.println("format: " + format);
+    System.out.println("additional: " + getAdditionalOptions());
     result = generateGraph(dottyFilename, format, filename);
     if (result != null) {
       if (cleanUpTempFiles())
@@ -419,7 +418,7 @@ public class GraphVizTreeVisualization {
     rand          = (int) (Math.random() * 1000);
     prefix        = System.getProperty("java.io.tmpdir") + File.separator + "gvtv" + Integer.toHexString(rand);
     dottyFilename = prefix + ".dot";
-    imageFilename = prefix + "." + getImageExtension();
+    imageFilename = prefix + ".png";  // for best quality
 
     // save dotty file
     msg = saveDotty(dotty, dottyFilename);
@@ -427,7 +426,7 @@ public class GraphVizTreeVisualization {
       return null;
 
     // generate image
-    msg = generateGraph(dottyFilename, imageFilename);
+    msg = generateGraph(dottyFilename, "png", imageFilename);
     if (msg != null) {
       if (cleanUpTempFiles()) {
 	deleteFile(dottyFilename);
